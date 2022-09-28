@@ -25,7 +25,7 @@ func (p *AppContext) read(sc *bufio.Scanner) string {
 func (p *AppContext) process() {
 
 	// TODO: replace following with appropriate implementation for processing.
-	p.result = fmt.Sprintf("%s", p.X)
+	p.result = p.X
 }
 
 func (p *AppContext) printResult() {
