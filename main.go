@@ -9,12 +9,12 @@ import (
 type AppContext struct {
 	// TODO: replace following with appropriate properties.
 	X      string
-	result string
+	Result string
 }
 
 type IAppContext interface {
-	process()
-	printResult()
+	Process()
+	PrintResult()
 }
 
 func (p *AppContext) read(sc *bufio.Scanner) string {
@@ -22,16 +22,16 @@ func (p *AppContext) read(sc *bufio.Scanner) string {
 	return sc.Text()
 }
 
-func (p *AppContext) process() {
+func (p *AppContext) Process() {
 
 	// TODO: replace following with appropriate implementation for processing.
-	p.result = p.X
+	p.Result = p.X
 }
 
-func (p *AppContext) printResult() {
+func (p *AppContext) PrintResult() {
 
 	// TODO: replace following with appropriate implementation for printing.
-	fmt.Println(p.result)
+	fmt.Println(p.Result)
 }
 
 func NewAppContext(sc *bufio.Scanner) *AppContext {
@@ -45,6 +45,6 @@ func main() {
 	sc := bufio.NewScanner(os.Stdin)
 
 	var context IAppContext = NewAppContext(sc)
-	context.process()
-	context.printResult()
+	context.Process()
+	context.PrintResult()
 }
