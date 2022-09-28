@@ -4,12 +4,15 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
+	"strconv"
 )
 
 type AppContext struct {
 	// TODO: replace following with appropriate properties.
-	X      string
-	Result string
+	X	int
+	Y	int
+	Result	int
 }
 
 type IAppContext interface {
@@ -17,15 +20,27 @@ type IAppContext interface {
 	PrintResult()
 }
 
-func (p *AppContext) read(sc *bufio.Scanner) string {
+func (p *AppContext) read(sc *bufio.Scanner) (int, int) {
 	sc.Scan()
-	return sc.Text()
+	line := strings.Split(sc.Text(), " ")
+        
+        X, err := strconv.Atoi(line[0])
+        if err != nil {
+          // exity
+          os.Exit(1)
+        }
+        Y, err := strconv.Atoi(line[1])
+        if err != nil {
+          // exity
+          os.Exit(1)
+        } 
+        return X, Y
 }
 
 func (p *AppContext) Process() {
 
 	// TODO: replace following with appropriate implementation for processing.
-	p.Result = p.X
+	p.Result = p.X + p.Y
 }
 
 func (p *AppContext) PrintResult() {
@@ -37,7 +52,10 @@ func (p *AppContext) PrintResult() {
 func NewAppContext(sc *bufio.Scanner) *AppContext {
 	context := &AppContext{}
 	// TODO: replace following with appropriate input reading.
-	context.X = context.read(sc)
+	X, Y := context.read(sc)
+        context.X = X
+        context.Y = Y
+
 	return context
 }
 
