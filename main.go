@@ -43,6 +43,9 @@ func NewAppContext(sc *bufio.Scanner) *AppContext {
 
 func main() {
 	sc := bufio.NewScanner(os.Stdin)
+        // TODO: make sure required(or suitable) initial / maximum buffer size 
+        buf := make([]byte, 16 * 1024)
+        sc.Buffer(buf, 256 * 1024)
 
 	var context IAppContext = NewAppContext(sc)
 	context.Process()
