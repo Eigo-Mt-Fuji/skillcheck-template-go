@@ -10,14 +10,14 @@ import (
 
 type AppContext struct {
 	// TODO: replace following with appropriate properties.
-	X	int
-	Y	int
-	Result	int
+	X	int;
+	Y	int;
+	Result	int;
 }
 
 type IAppContext interface {
-	Process()
-	PrintResult()
+	Process();
+	PrintResult();
 }
 
 func (p *AppContext) read(sc *bufio.Scanner) (int, int) {
